@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Polarete — życie w równowadze",
+    "description": "Aplikacja, która pomaga utrzymać równowagę między pracą, zdrowiem, sportem, relacjami, zabawą i rozwojem. AI sugestie, gamification, prawdziwe wyniki."
+  },
+  "nav": {
+    "features": "Funkcje",
+    "howItWorks": "Jak to działa",
+    "pricing": "Cennik",
+    "faq": "FAQ",
+    "joinWaitlist": "Dołącz do waitlisty"
+  },
+  "hero": {
+    "tagline": "Życie w równowadze",
+    "title": "Zarządzaj wszystkimi obszarami życia z jednego miejsca.",
+    "subtitle": "Zadania, cele, rytuały — w 6 obszarach życia (zdrowie, sport, praca, relacje, zabawa, rozwój). AI uczy się Ciebie i podpowiada, na czym się skupić dziś.",
+    "ctaPrimary": "Dołącz do waitlisty",
+    "ctaSecondary": "Zobacz jak to działa",
+    "social": "Setki osób już się zapisało • Premiera 2026"
+  },
+  "features": {
+    "title": "Wszystko, czego potrzebujesz, żeby żyć świadomie",
+    "subtitle": "Polarete łączy najlepsze pomysły z task managerów, habit trackerów i journalingu — w jeden spójny system.",
+    "balanceWheel": {
+      "title": "Balance Wheel",
+      "body": "Wizualny radar równowagi 6 obszarów Twojego życia. Widzisz na pierwszy rzut oka, gdzie inwestujesz energię, a gdzie potrzebujesz domknąć lukę."
+    },
+    "spaces": {
+      "title": "6 Obszarów Życia",
+      "body": "Zdrowie, sport, praca, relacje, zabawa, rozwój. Każde zadanie, cel i rytuał ma swój dom — to nie kolejne tagi, to filozofia."
+    },
+    "gamification": {
+      "title": "Gamification, która ma sens",
+      "body": "Energy, achievements, streaks i quests. Bez infantylnych odznaczeń — tylko mechaniki, które naprawdę napędzają wytrwałość."
+    },
+    "ai": {
+      "title": "AI, które naprawdę Cię zna",
+      "body": "Embeddings + topic graph + procrastination detection. Polarete uczy się Twoich wzorców i sugeruje, co zaplanować, kiedy odpocząć i kiedy się zmotywować."
+    }
+  },
+  "how": {
+    "title": "Jak to działa",
+    "subtitle": "Trzy kroki do życia, w którym wszystko jest w równowadze.",
+    "steps": [
+      {
+        "title": "1. Wybierz obszary",
+        "body": "Skonfiguruj wagi 6 obszarów życia. Polarete dopasuje sugestie i metryki do tego, co dla Ciebie ważne."
+      },
+      {
+        "title": "2. Planuj i działaj",
+        "body": "Twórz zadania, cele i rytuały. AI sugeruje, na czym się skupić — Ty decydujesz, co robisz."
+      },
+      {
+        "title": "3. Obserwuj wzrost",
+        "body": "Balance Wheel pokazuje progres tygodniowo. Widzisz, jak rośnie Twoja równowaga — a nie tylko liczba zamkniętych tasków."
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Prosto i sprawiedliwie",
+    "subtitle": "Zacznij za darmo. Płać dopiero gdy poczujesz wartość.",
+    "free": {
+      "name": "Free",
+      "price": "0 zł",
+      "period": "zawsze",
+      "tagline": "Cały Core Loop. Bez ograniczeń czasu.",
+      "features": [
+        "Planner + Focus mode",
+        "6 obszarów życia",
+        "Cele i rytuały — do 5 aktywnych",
+        "Balance Wheel — 14 dni historii",
+        "1 urządzenie"
+      ],
+      "cta": "Zacznij za darmo"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "29 zł",
+      "period": "miesięcznie",
+      "tagline": "Pełna moc + AI suggestions.",
+      "features": [
+        "Wszystko z Free",
+        "Cele i rytuały — bez limitu",
+        "AI Goal sugar + Procrastination detection",
+        "Balance Wheel — pełna historia",
+        "Synchronizacja kalendarza i e-maila",
+        "Wsparcie premium",
+        "Wszystkie urządzenia"
+      ],
+      "cta": "Dołącz do waitlisty",
+      "badge": "Najpopularniejszy"
+    }
+  },
+  "faq": {
+    "title": "Najczęstsze pytania",
+    "items": [
+      {
+        "q": "Kiedy będzie premiera?",
+        "a": "Plan: pierwszy publiczny build Q3 2026. Waitlista dostaje wczesny dostęp 2-4 tygodnie przed launch."
+      },
+      {
+        "q": "Na jakich platformach Polarete działa?",
+        "a": "Web (przeglądarka) i Desktop (macOS, Windows, Linux). Mobile jest na roadmapie po MVP."
+      },
+      {
+        "q": "Czy moje dane są bezpieczne?",
+        "a": "Tak. Backend Supabase z Row Level Security, hosting w EU. Zgodność z RODO, eksport i usunięcie konta na życzenie. Pełna polityka prywatności przed launch."
+      },
+      {
+        "q": "Jak Polarete jest inny niż Notion / Todoist / Habitica?",
+        "a": "Tamte narzędzia rozwiązują pojedynczy problem. Polarete łączy zadania, cele, rytuały i równowagę w jeden system, w którym AI rozumie kontekst całego Twojego życia — nie tylko tej jednej listy zadań."
+      },
+      {
+        "q": "Czy AI ma dostęp do moich danych?",
+        "a": "Tylko Twoich i tylko żeby pomóc Tobie. Embeddings są przechowywane lokalnie w Twojej bazie, prompts idą przez nasz proxy, dane nigdy nie trafiają do treningu modeli."
+      }
+    ]
+  },
+  "experiment": {
+    "pricingCta": {
+      "tryFree": "Wypróbuj za darmo",
+      "startTrial": "Zacznij okres próbny"
+    }
+  },
+  "footer": {
+    "tagline": "Życie w równowadze",
+    "sections": {
+      "product": "Produkt",
+      "company": "Firma",
+      "legal": "Legal"
+    },
+    "links": {
+      "features": "Funkcje",
+      "pricing": "Cennik",
+      "changelog": "Changelog",
+      "about": "O nas",
+      "blog": "Blog",
+      "contact": "Kontakt",
+      "privacy": "Polityka prywatności",
+      "terms": "Regulamin",
+      "cookies": "Cookies"
+    },
+    "rights": "© 2026 Polarete. Wszystkie prawa zastrzeżone."
+  }
+}
