@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<title>Polarete — Brand Contexts (Top Picks)</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --jost: -apple-system, "Inter", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--jost);
+    background: #f0f0ec;
+    color: var(--ink);
+    padding: 32px;
+  }
+  .page-h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .page-lede { color: var(--muted); margin-bottom: 32px; max-width: 70ch; font-size: 14px; line-height: 1.5; }
+
+  .pick { background: white; border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .pick-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 4px; }
+  .pick-title { font-size: 18px; font-weight: 700; }
+  .pick-meta { font-family: ui-monospace, "SF Mono", monospace; font-size: 11px; color: var(--muted); }
+  .pick-note { color: var(--muted); font-size: 13px; margin-bottom: 20px; line-height: 1.5; }
+
+  .hexes { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .hex-chip { display: flex; align-items: center; gap: 6px; font-family: ui-monospace, monospace; font-size: 11px; color: var(--muted); background: #f4f4f1; padding: 4px 8px; border-radius: 6px; }
+  .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.08); }
+
+  .ctx-grid { display: grid; gap: 16px; }
+  .ctx-section { display: flex; flex-direction: column; gap: 8px; }
+  .ctx-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+
+  /* Hero — landing-style */
+  .ctx-hero {
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .ctx-hero .logo { width: 88px; height: 88px; margin-bottom: 32px; }
+  .ctx-hero h2 { font-size: 56px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .ctx-hero p { font-size: 18px; margin-bottom: 32px; opacity: 0.85; }
+  .ctx-hero .cta {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    background: #FF5E54;
+    color: #f8f3ec;
+    border: none;
+  }
+
+  /* Splash — square */
+  .ctx-splash {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .ctx-splash .logo { width: 50%; height: 50%; }
+
+  /* Email banner */
+  .ctx-email {
+    aspect-ratio: 5/1;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .ctx-email .logo { width: 48px; height: 48px; flex-shrink: 0; }
+  .ctx-email .wordmark { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .ctx-email .tag { font-size: 12px; opacity: 0.65; margin-left: auto; }
+
+  /* Icon grid */
+  .ctx-icons {
+    padding: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: end;
+    gap: 16px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .icon-cell .px { font-family: ui-monospace, monospace; font-size: 9px; opacity: 0.5; }
+  .icon-cell .icon-frame { display: flex; align-items: center; justify-content: center; }
+
+  /* Social square */
+  .ctx-social {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .ctx-social .logo { width: 60%; height: 60%; }
+
+  @media (min-width: 980px) {
+    .ctx-grid {
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-areas:
+        "hero splash social"
+        "email icons icons";
+    }
+    .ctx-hero-w { grid-area: hero; }
+    .ctx-splash-w { grid-area: splash; }
+    .ctx-social-w { grid-area: social; }
+    .ctx-email-w { grid-area: email; }
+    .ctx-icons-w { grid-area: icons; }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-h1">Polarete — Brand Contexts (5 top picks)</h1>
+<p class="page-lede">Logo umieszczone w realnych zastosowaniach: landing hero, splash screen, email banner, icon grid (16→256px), social avatar. Wszystkie SVG inline — kolory w dataset hex chips poniżej.</p>
+
+<!-- ==================== PICK 1: #75 Espresso ==================== -->
+<section class="pick">
+  <div class="pick-header">
+    <div class="pick-title">#75 — Espresso (warm dark canvas) <span style="background:#fef3c7;color:#854d0e;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-left:8px;">Recommended</span></div>
+    <div class="pick-meta">solid bg / cream body + watermelon dot</div>
+  </div>
+  <p class="pick-note">Warm dark mocha tone. Habit-coded (kawa, rytuał poranny), grounding, mentor-warmth. Nie korpo (jak granat), nie food-app (jak Headspace orange). Idealny brand canvas dark dla landing hero, splash, social header.</p>
+  <div class="hexes">
+    <span class="hex-chip"><span class="swatch" style="background:#3D2B23"></span>#3D2B23 canvas</span>
+    <span class="hex-chip"><span class="swatch" style="background:#f8f3ec"></span>#f8f3ec body</span>
+    <span class="hex-chip"><span class="swatch" style="background:#FF5E54"></span>#FF5E54 dot</span>
+  </div>
+  <div class="ctx-grid">
+    <div class="ctx-section ctx-hero-w">
+      <span class="ctx-label">Landing hero (16:9)</span>
+      <div class="ctx-hero" style="background:#3D2B23;color:#f8f3ec">
+        <svg class="logo" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+          <path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/>
+          <path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/>
+        </svg>
+        <h2>polarete</h2>
+        <p>the life changer assistant</p>
+        <button class="cta">Get started</button>
+      </div>
+    </div>
+    <div class="ctx-section ctx-splash-w">
+      <span class="ctx-label">Splash 1:1</span>
+      <div class="ctx-splash" style="background:#3D2B23">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-social-w">
+      <span class="ctx-label">Social 1:1 (1080²)</span>
+      <div class="ctx-social" style="background:#3D2B23">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-email-w">
+      <span class="ctx-label">Email banner (5:1, 600px)</span>
+      <div class="ctx-email" style="background:#3D2B23;color:#f8f3ec">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+        <span class="wordmark">polarete</span>
+        <span class="tag">the life changer assistant</span>
+      </div>
+    </div>
+    <div class="ctx-section ctx-icons-w">
+      <span class="ctx-label">App icon (16 → 256px)</span>
+      <div class="ctx-icons" style="background:#f4f4f1">
+        <div class="icon-cell"><div class="icon-frame" style="background:#3D2B23;border-radius:3px;width:16px;height:16px;padding:2px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">16</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#3D2B23;border-radius:6px;width:32px;height:32px;padding:4px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">32</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#3D2B23;border-radius:12px;width:64px;height:64px;padding:8px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">64</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#3D2B23;border-radius:24px;width:128px;height:128px;padding:14px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">128</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#3D2B23;border-radius:42px;width:256px;height:256px;padding:28px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">256</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PICK 2: #74 Chocolate Brown ==================== -->
+<section class="pick">
+  <div class="pick-header">
+    <div class="pick-title">#74 — Chocolate Brown (Pantone trend 2026)</div>
+    <div class="pick-meta">solid bg / cream body + watermelon dot</div>
+  </div>
+  <p class="pick-note">Trend 2026 (canonical chocolate). Bardziej "heritage / leather notebook" niż Espresso. Świetny do dokumentów, długich form (case study, blog), branżowe touchpointy. Trochę cięższy w atmosferze niż #75.</p>
+  <div class="hexes">
+    <span class="hex-chip"><span class="swatch" style="background:#4E342E"></span>#4E342E canvas</span>
+    <span class="hex-chip"><span class="swatch" style="background:#f8f3ec"></span>#f8f3ec body</span>
+    <span class="hex-chip"><span class="swatch" style="background:#FF5E54"></span>#FF5E54 dot</span>
+  </div>
+  <div class="ctx-grid">
+    <div class="ctx-section ctx-hero-w">
+      <span class="ctx-label">Landing hero (16:9)</span>
+      <div class="ctx-hero" style="background:#4E342E;color:#f8f3ec">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+        <h2>polarete</h2>
+        <p>the life changer assistant</p>
+        <button class="cta">Get started</button>
+      </div>
+    </div>
+    <div class="ctx-section ctx-splash-w">
+      <span class="ctx-label">Splash 1:1</span>
+      <div class="ctx-splash" style="background:#4E342E">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-social-w">
+      <span class="ctx-label">Social 1:1</span>
+      <div class="ctx-social" style="background:#4E342E">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-email-w">
+      <span class="ctx-label">Email banner</span>
+      <div class="ctx-email" style="background:#4E342E;color:#f8f3ec">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+        <span class="wordmark">polarete</span>
+        <span class="tag">the life changer assistant</span>
+      </div>
+    </div>
+    <div class="ctx-section ctx-icons-w">
+      <span class="ctx-label">App icon</span>
+      <div class="ctx-icons" style="background:#f4f4f1">
+        <div class="icon-cell"><div class="icon-frame" style="background:#4E342E;border-radius:3px;width:16px;height:16px;padding:2px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">16</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#4E342E;border-radius:6px;width:32px;height:32px;padding:4px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">32</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#4E342E;border-radius:12px;width:64px;height:64px;padding:8px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">64</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#4E342E;border-radius:24px;width:128px;height:128px;padding:14px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">128</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#4E342E;border-radius:42px;width:256px;height:256px;padding:28px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px">256</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PICK 3: #49 Mocha→Chocolate gradient ==================== -->
+<section class="pick">
+  <div class="pick-header">
+    <div class="pick-title">#49 — Mocha → Chocolate (gradient, mono logo)</div>
+    <div class="pick-meta">linear-gradient 135° / mono cream logo</div>
+  </div>
+  <p class="pick-note">Twój załącznik vibe — gradient od Pantone'25 (Mocha Mousse) do Trend'26 (Chocolate Brown). Mono logo bez akcentu — bardziej luksusowo, mniej "akcji". Gdy potrzebujesz emocji "głębi" zamiast iskry. Świetny dla cover image, hero w marketing email.</p>
+  <div class="hexes">
+    <span class="hex-chip"><span class="swatch" style="background:#A47864"></span>#A47864 from</span>
+    <span class="hex-chip"><span class="swatch" style="background:#4E342E"></span>#4E342E to</span>
+    <span class="hex-chip"><span class="swatch" style="background:#f8f3ec"></span>#f8f3ec mono logo</span>
+  </div>
+  <div class="ctx-grid">
+    <div class="ctx-section ctx-hero-w">
+      <span class="ctx-label">Landing hero (16:9)</span>
+      <div class="ctx-hero" style="background:linear-gradient(135deg,#A47864,#4E342E);color:#f8f3ec">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg>
+        <h2>polarete</h2>
+        <p>the life changer assistant</p>
+        <button class="cta">Get started</button>
+      </div>
+    </div>
+    <div class="ctx-section ctx-splash-w">
+      <span class="ctx-label">Splash 1:1</span>
+      <div class="ctx-splash" style="background:linear-gradient(135deg,#A47864,#4E342E)">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-social-w">
+      <span class="ctx-label">Social 1:1</span>
+      <div class="ctx-social" style="background:linear-gradient(135deg,#A47864,#4E342E)">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-email-w">
+      <span class="ctx-label">Email banner</span>
+      <div class="ctx-email" style="background:linear-gradient(135deg,#A47864,#4E342E);color:#f8f3ec">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg>
+        <span class="wordmark">polarete</span>
+        <span class="tag">the life changer assistant</span>
+      </div>
+    </div>
+    <div class="ctx-section ctx-icons-w">
+      <span class="ctx-label">App icon</span>
+      <div class="ctx-icons" style="background:#f4f4f1">
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#A47864,#4E342E);border-radius:3px;width:16px;height:16px;padding:2px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg></div><span class="px">16</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#A47864,#4E342E);border-radius:6px;width:32px;height:32px;padding:4px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg></div><span class="px">32</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#A47864,#4E342E);border-radius:12px;width:64px;height:64px;padding:8px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg></div><span class="px">64</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#A47864,#4E342E);border-radius:24px;width:128px;height:128px;padding:14px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg></div><span class="px">128</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#A47864,#4E342E);border-radius:42px;width:256px;height:256px;padding:28px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#f8f3ec"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#f8f3ec"/></svg></div><span class="px">256</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PICK 4: #45 Cloud Dancer + Watermelon (light brand canvas) ==================== -->
+<section class="pick">
+  <div class="pick-header">
+    <div class="pick-title">#45 — Cloud Dancer + Watermelon (light brand canvas)</div>
+    <div class="pick-meta">solid bg / ink body + watermelon dot</div>
+  </div>
+  <p class="pick-note">Pantone 2026 Cloud Dancer (warm white) + ink body + brand watermelon dot. Najmocniejszy LIGHT brand canvas — landing page hero, marketing email, drukowane materiały. "Eliminacja chaosu" emocjonalnie zakodowana w kolorze. Watermelon na nim świeci, ale nie agresywnie.</p>
+  <div class="hexes">
+    <span class="hex-chip"><span class="swatch" style="background:#F0EEE9"></span>#F0EEE9 canvas (Pantone'26)</span>
+    <span class="hex-chip"><span class="swatch" style="background:#161618"></span>#161618 body</span>
+    <span class="hex-chip"><span class="swatch" style="background:#FF5E54"></span>#FF5E54 dot</span>
+  </div>
+  <div class="ctx-grid">
+    <div class="ctx-section ctx-hero-w">
+      <span class="ctx-label">Landing hero (16:9)</span>
+      <div class="ctx-hero" style="background:#F0EEE9;color:#161618">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+        <h2>polarete</h2>
+        <p>the life changer assistant</p>
+        <button class="cta">Get started</button>
+      </div>
+    </div>
+    <div class="ctx-section ctx-splash-w">
+      <span class="ctx-label">Splash 1:1</span>
+      <div class="ctx-splash" style="background:#F0EEE9">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-social-w">
+      <span class="ctx-label">Social 1:1</span>
+      <div class="ctx-social" style="background:#F0EEE9">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-email-w">
+      <span class="ctx-label">Email banner</span>
+      <div class="ctx-email" style="background:#F0EEE9;color:#161618">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg>
+        <span class="wordmark">polarete</span>
+        <span class="tag">the life changer assistant</span>
+      </div>
+    </div>
+    <div class="ctx-section ctx-icons-w">
+      <span class="ctx-label">App icon</span>
+      <div class="ctx-icons" style="background:#3D2B23">
+        <div class="icon-cell"><div class="icon-frame" style="background:#F0EEE9;border-radius:3px;width:16px;height:16px;padding:2px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px" style="color:#f8f3ec">16</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#F0EEE9;border-radius:6px;width:32px;height:32px;padding:4px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px" style="color:#f8f3ec">32</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#F0EEE9;border-radius:12px;width:64px;height:64px;padding:8px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px" style="color:#f8f3ec">64</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#F0EEE9;border-radius:24px;width:128px;height:128px;padding:14px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px" style="color:#f8f3ec">128</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:#F0EEE9;border-radius:42px;width:256px;height:256px;padding:28px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/></svg></div><span class="px" style="color:#f8f3ec">256</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PICK 5: #59 Cloud Dancer→Mocha gradient ==================== -->
+<section class="pick">
+  <div class="pick-header">
+    <div class="pick-title">#59 — Cloud Dancer → Mocha (light gradient, mono ink logo)</div>
+    <div class="pick-meta">linear-gradient 135° / mono ink logo</div>
+  </div>
+  <p class="pick-note">Pantone'26 → Pantone'25 fade. Mindful clarity przechodzi w heritage warmth. Najbardziej premium light alternatywa — galeryjny, przyjazny, "morning light in coffee shop". Idealny dla cover image w ebooku, Notion-like dokumentacji, marketingowy print.</p>
+  <div class="hexes">
+    <span class="hex-chip"><span class="swatch" style="background:#F0EEE9"></span>#F0EEE9 from</span>
+    <span class="hex-chip"><span class="swatch" style="background:#A47864"></span>#A47864 to</span>
+    <span class="hex-chip"><span class="swatch" style="background:#161618"></span>#161618 mono logo</span>
+  </div>
+  <div class="ctx-grid">
+    <div class="ctx-section ctx-hero-w">
+      <span class="ctx-label">Landing hero (16:9)</span>
+      <div class="ctx-hero" style="background:linear-gradient(135deg,#F0EEE9,#A47864);color:#161618">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg>
+        <h2>polarete</h2>
+        <p>the life changer assistant</p>
+        <button class="cta">Get started</button>
+      </div>
+    </div>
+    <div class="ctx-section ctx-splash-w">
+      <span class="ctx-label">Splash 1:1</span>
+      <div class="ctx-splash" style="background:linear-gradient(135deg,#F0EEE9,#A47864)">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-social-w">
+      <span class="ctx-label">Social 1:1</span>
+      <div class="ctx-social" style="background:linear-gradient(135deg,#F0EEE9,#A47864)">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg>
+      </div>
+    </div>
+    <div class="ctx-section ctx-email-w">
+      <span class="ctx-label">Email banner</span>
+      <div class="ctx-email" style="background:linear-gradient(135deg,#F0EEE9,#A47864);color:#161618">
+        <svg class="logo" viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg>
+        <span class="wordmark">polarete</span>
+        <span class="tag">the life changer assistant</span>
+      </div>
+    </div>
+    <div class="ctx-section ctx-icons-w">
+      <span class="ctx-label">App icon</span>
+      <div class="ctx-icons" style="background:#3D2B23">
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#F0EEE9,#A47864);border-radius:3px;width:16px;height:16px;padding:2px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg></div><span class="px" style="color:#f8f3ec">16</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#F0EEE9,#A47864);border-radius:6px;width:32px;height:32px;padding:4px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg></div><span class="px" style="color:#f8f3ec">32</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#F0EEE9,#A47864);border-radius:12px;width:64px;height:64px;padding:8px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg></div><span class="px" style="color:#f8f3ec">64</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#F0EEE9,#A47864);border-radius:24px;width:128px;height:128px;padding:14px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg></div><span class="px" style="color:#f8f3ec">128</span></div>
+        <div class="icon-cell"><div class="icon-frame" style="background:linear-gradient(135deg,#F0EEE9,#A47864);border-radius:42px;width:256px;height:256px;padding:28px"><svg viewBox="0 0 1024 1024"><path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#161618"/><path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#161618"/></svg></div><span class="px" style="color:#f8f3ec">256</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

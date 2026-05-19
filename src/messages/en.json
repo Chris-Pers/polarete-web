@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Polarete — life in balance",
+    "description": "An app that helps you stay balanced across work, health, sport, relationships, play and growth. AI suggestions, gamification, real outcomes."
+  },
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "joinWaitlist": "Join waitlist"
+  },
+  "hero": {
+    "tagline": "Life in balance",
+    "title": "Manage every area of your life from one place.",
+    "subtitle": "Tasks, goals, rituals — across 6 life areas (health, sport, work, relationships, play, growth). AI learns you and suggests where to focus today.",
+    "ctaPrimary": "Join the waitlist",
+    "ctaSecondary": "See how it works",
+    "social": "Hundreds already signed up • Launching 2026"
+  },
+  "features": {
+    "title": "Everything you need to live consciously",
+    "subtitle": "Polarete combines the best of task managers, habit trackers and journaling — into one coherent system.",
+    "balanceWheel": {
+      "title": "Balance Wheel",
+      "body": "A visual radar of 6 areas of your life. See where you invest energy and where you need to close the gap — at a glance."
+    },
+    "spaces": {
+      "title": "6 Life Areas",
+      "body": "Health, sport, work, relationships, play, growth. Every task, goal and ritual has a home — these aren't tags, they're a philosophy."
+    },
+    "gamification": {
+      "title": "Gamification that makes sense",
+      "body": "Energy, achievements, streaks and quests. No childish badges — just mechanics that genuinely fuel persistence."
+    },
+    "ai": {
+      "title": "AI that actually knows you",
+      "body": "Embeddings + topic graph + procrastination detection. Polarete learns your patterns and suggests what to plan, when to rest and when to push."
+    }
+  },
+  "how": {
+    "title": "How it works",
+    "subtitle": "Three steps to a life where everything is in balance.",
+    "steps": [
+      {
+        "title": "1. Choose your areas",
+        "body": "Set the weights of the 6 life areas. Polarete adapts its suggestions and metrics to what matters to you."
+      },
+      {
+        "title": "2. Plan and act",
+        "body": "Create tasks, goals and rituals. AI suggests where to focus — you decide what you actually do."
+      },
+      {
+        "title": "3. Watch yourself grow",
+        "body": "Balance Wheel shows your weekly progress. You see your balance growing — not just a count of closed tasks."
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Simple and fair",
+    "subtitle": "Start free. Pay only when you feel the value.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "forever",
+      "tagline": "The whole core loop. No time limits.",
+      "features": [
+        "Planner + Focus mode",
+        "6 life areas",
+        "Goals and rituals — up to 5 active",
+        "Balance Wheel — 14 days of history",
+        "1 device"
+      ],
+      "cta": "Start free"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$8",
+      "period": "per month",
+      "tagline": "Full power + AI suggestions.",
+      "features": [
+        "Everything in Free",
+        "Goals and rituals — unlimited",
+        "AI Goal sugar + Procrastination detection",
+        "Balance Wheel — full history",
+        "Calendar and email sync",
+        "Premium support",
+        "All devices"
+      ],
+      "cta": "Join the waitlist",
+      "badge": "Most popular"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked",
+    "items": [
+      {
+        "q": "When are you launching?",
+        "a": "Plan: first public build in Q3 2026. The waitlist gets early access 2–4 weeks before launch."
+      },
+      {
+        "q": "Which platforms does Polarete run on?",
+        "a": "Web (browser) and Desktop (macOS, Windows, Linux). Mobile is on the roadmap after MVP."
+      },
+      {
+        "q": "Is my data safe?",
+        "a": "Yes. Supabase backend with Row Level Security, EU hosting. GDPR-compliant, with full data export and deletion on request. Full privacy policy before launch."
+      },
+      {
+        "q": "How is Polarete different from Notion / Todoist / Habitica?",
+        "a": "Those tools solve a single problem. Polarete unites tasks, goals, rituals and balance into one system where AI understands the context of your whole life — not just one to-do list."
+      },
+      {
+        "q": "Does AI have access to my data?",
+        "a": "Only yours and only to help you. Embeddings live in your database, prompts go through our proxy, your data never trains anyone's model."
+      }
+    ]
+  },
+  "experiment": {
+    "pricingCta": {
+      "tryFree": "Try free",
+      "startTrial": "Start trial"
+    }
+  },
+  "footer": {
+    "tagline": "Life in balance",
+    "sections": {
+      "product": "Product",
+      "company": "Company",
+      "legal": "Legal"
+    },
+    "links": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "changelog": "Changelog",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacy": "Privacy policy",
+      "terms": "Terms",
+      "cookies": "Cookies"
+    },
+    "rights": "© 2026 Polarete. All rights reserved."
+  }
+}

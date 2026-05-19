@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ─── Polarete brand tokens (mirror @apps/desktop, simplified for landing) ─
+ * Dark canvas #151413 / Light canvas #F3F2F2 — 5% HSL saturation, hue ~30°.
+ * Espresso anchor #3D2B23 — punktowy mocha accent.
+ * Watermelon spark #FF5E54 (dark) / #d63729 (light) — brand spark / CTA. */
+
+@theme {
+  --font-sans: 'Satoshi', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Light defaults — palette flips at .dark */
+  --color-canvas: #F3F2F2;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #ECEAE7;
+  --color-ink: #151413;
+  --color-ink-secondary: #3F3D3A;
+  --color-ink-tertiary: #6B6864;
+  --color-border: #E0DDD8;
+  --color-border-hover: #3D2B23;
+
+  --color-anchor: #3D2B23;
+  --color-spark: #d63729;
+  --color-spark-hover: #b82a1f;
+}
+
+/* Dark mode override — same custom-variant pattern as desktop */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --color-canvas: #151413;
+  --color-surface: #1F1D1B;
+  --color-surface-muted: #29262378;
+  --color-ink: #F3F2F2;
+  --color-ink-secondary: #C9C5BF;
+  --color-ink-tertiary: #8A8580;
+  --color-border: #2E2B27;
+  --color-border-hover: #3D2B23;
+
+  --color-spark: #FF5E54;
+  --color-spark-hover: #FF7A72;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbars (matches desktop styling) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+::selection {
+  background: var(--color-anchor);
+  color: var(--color-canvas);
+}

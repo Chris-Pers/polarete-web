@@ -1,0 +1,37 @@
+{
+  "name": "polarete-web",
+  "private": true,
+  "version": "0.1.0",
+  "description": "polarete.com — public landing site (Next.js 15 App Router + MDX + next-intl)",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "sync-brand": "bash scripts/sync-brand.sh"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.0",
+    "next": "^15.1.0",
+    "next-intl": "^3.26.0",
+    "posthog-js": "^1.205.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@tailwindcss/postcss": "^4.2.0",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^24.10.13",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^15.1.0",
+    "tailwindcss": "^4.2.0",
+    "typescript": "~5.9.3"
+  }
+}

@@ -1,89 +1,92 @@
-# Polarete-Web — Public Marketing Site
+# polarete-web
 
-Landing page, blog, docs, changelog dla polarete.com. Source-of-truth dla content engine (poltent czyta MDX z tego repo).
+Public marketing site dla polarete.com. Fork z `polarete/apps/landing` (fresh start, brak history). Brand live-linked z polarete monorepo via GitHub Action daily sync.
 
 ## Stack
 
-Next.js 15 App Router · Tailwind v4 + brand tokens z polarete · MDX · Vercel
-Loops.so (waitlist + email) · Vercel Analytics (free) → Plausible (post-launch)
+Next.js 15.1 App Router · MDX · Tailwind v4 (`@theme` z polarete) · next-intl (PL/EN) · PostHog · Vercel
 
 ## Architektura
 
 ```
 polarete-web/
-├── app/
-│   ├── (marketing)/      # Landing, features, pricing
-│   ├── (blog)/           # Blog index + posts (v0.2+)
-│   ├── (legal)/          # Privacy, terms
-│   ├── api/
-│   │   ├── waitlist/     # Loops.so integration
-│   │   └── og/           # Dynamic OG images
-│   └── globals.css       # Tailwind v4 + brand tokens
-├── components/
-│   ├── brand/            # Logo, Wordmark
-│   ├── sections/         # Hero, Features, FAQ
-│   └── ui/               # Button, Input, Card
-├── content/              # MDX blog posts (v0.2+)
-├── lib/
-│   ├── loops.ts
-│   └── seo.ts
-└── public/
-    ├── polarete-mark.svg
-    └── polarete-favicon.svg
+├── src/
+│   ├── app/                # globals.css (brand tokens), layout, page, robots, sitemap
+│   ├── components/         # Navbar, sections (Hero, Features, HowItWorks, Pricing, FAQ, Footer)
+│   ├── i18n/               # next-intl routing + request
+│   ├── lib/posthog.ts
+│   ├── messages/{pl,en}.json
+│   └── middleware.ts
+├── public/                 # Logos, favicons (synced)
+├── brand/                  # Brand catalog: showcase HTML + logo variants (synced)
+├── scripts/sync-brand.sh   # Manual sync override
+└── .github/workflows/sync-brand.yml  # Daily auto-sync PR
 ```
 
-## Decyzje
+## Brand sync — live link z polarete
 
-- **Repo:** **public** — SEO boost + build-in-public credibility
-- **Brand:** copy tokens z polarete (`@theme` w globals.css), refactor do `@polarete/brand` przy monorepo migration
-- **i18n:** PL primary na MVP, EN w v0.2 via next-intl
-- **Hosting:** Vercel Free do ~6K DAU, Pro ($20) potem
-- **Email:** Loops.so (free <500 subs)
-- **Analytics:** Vercel Analytics na MVP, Plausible po PH launch
-- **Theme:** `next-themes` (spójne z polarete app)
+**Source of truth:** `Chris-Pers/polarete` (private monorepo) — `apps/landing/src/app/globals.css` + `apps/landing/public/*.svg` + `brand/`.
 
-## Roadmap
+**Two paths:**
 
-| Wersja | Co |
-|--------|-----|
-| v0.1.0 | Homepage + waitlist (Loops.so) + SEO + OG |
-| v0.2.0 | Blog (MDX) + i18n PL/EN + RSS |
-| v0.3.0 | Pricing page + Stripe checkout |
-| v0.4.0 | Help docs + Changelog |
-| v0.5.0 | Customer stories + Use cases |
-| v1.0.0 | Production launch |
+1. **Auto:** `.github/workflows/sync-brand.yml` — codziennie 02:00 UTC, otwiera PR jeśli są zmiany. Wymaga secret `POLARETE_SYNC_PAT` (fine-grained PAT z read access do polarete).
 
-## Brand transfer z polarete
+2. **Manual:** `npm run sync-brand` — z lokalnego clone'a polarete (`$POLARETE_PATH` env, default `~/Documents/App/polarete`).
 
-Skopiuj z `~/Documents/App/polarete/`:
-- `src/styles/globals.css` sekcja `@theme` (kolory, fonts, spacing)
-- `public/polarete-mark.svg` → `public/polarete-mark.svg`
-- `public/polarete-favicon.svg` → `public/polarete-favicon.svg`
+**Pre-deploy:** zawsze odpalaj manual sync przed dużymi UI release'ami, żeby Vercel build miał aktualne tokens.
 
-Font Satoshi via Fontshare CDN w `<head>` layoutu.
+## Decyzje techniczne
 
-Skill `polarete-brand` (user-level) — automatyczny przy pracy nad UI.
+- **Fresh start** (no git history z polarete) — celowe, czysty repo, history filozofii nie wymaga
+- **Standalone Next.js** (NIE pnpm workspace) — łatwiejszy single-project workflow
+- **`@/*` aliases tylko** — żadnych `@polarete/*` cross-package imports
+- **Brand jako kopia (synced)** — Vercel build wymaga real files, nie symlinks
+- **Public repo** — SEO boost + community contributions możliwe
 
-## Bezpieczeństwo (public repo)
+## Setup po pierwszym clone
 
-- `.env.local` w `.gitignore` (Loops API key, Stripe key)
-- Build-time env z Vercel UI, nie z code
-- Brak danych klientów (waitlist email idzie bezpośrednio do Loops, nie do nas)
-- ToS + Privacy w v0.2 przed PH launch
+```bash
+git clone git@github.com:Chris-Pers/polarete-web.git
+cd polarete-web
+npm install
+
+# Brand sync (jeśli zmieniony w polarete od ostatniego commit'a)
+npm run sync-brand
+
+# Dev
+npm run dev
+```
 
 ## Rules
 
 Auto-loaded z `.claude/rules/`:
-- `workflow.md` — Git/GitHub conventions, branches, commits, scopes
+- `workflow.md` — Git/GitHub conventions, branches, commits, scopes (landing, blog, pricing, seo, legal, i18n, infra, ui, analytics)
 
 ## Skills
 
 - `/sprint-start <ids>` — branch + draft PR
 - `/sprint-close` — build check → merge → cleanup
-- `polarete-brand` (user-level) — UI design system
+- `polarete-brand` (user-level w `~/.claude/skills/`) — UI design system, brand tokens, anti-patterns
+
+## Coding principles (z polarete AGENTS.md, ogólne)
+
+1. **Think Before Coding.** State assumptions, present alternatives, ask if unclear.
+2. **Simplicity First.** Minimum code. No premature abstractions.
+3. **Surgical Changes.** Touch only what you must. Match existing style.
+4. **Goal-Driven Execution.** Verifiable goals — test first when fixing.
+
+## UI rules
+
+Brand tokens (auto-synced z polarete):
+- `--color-canvas` / `--color-surface` / `--color-ink` / `--color-spark` / `--color-anchor`
+- 5% HSL saturation, hue ~30° (invisible warmth)
+- Espresso anchor `#3D2B23` — punktowy mocha accent
+- Watermelon spark `#FF5E54` dark / `#d63729` light
+
+**Never:** raw hex, `text-white`/`bg-white`, custom button/input/select. Use brand tokens + `@polarete/ui` patterns when applicable (manual port z polarete jeśli brak inline).
 
 ## Powiązane
 
-- [Polarete app](https://github.com/Chris-Pers/polarete) — main product (private), source of brand tokens
-- [Poltent](https://github.com/Chris-Pers/poltent) — content engine (private), czyta blog MDX z tego repo (v0.2+)
-- [Go-To-Market Plan](https://www.notion.so/34860e48b6c281248674c4031de4cc3a)
+- [Polarete app](https://github.com/Chris-Pers/polarete) — main product (private), brand source
+- [Poltent](https://github.com/Chris-Pers/poltent) — content engine (private)
+- [Go-To-Market Plan 2026](https://www.notion.so/34860e48b6c281248674c4031de4cc3a)

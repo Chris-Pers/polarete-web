@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<title>Polarete — Realistic App Mockup (Dark + Light)</title>
+<style>
+  :root {
+    /* Brand */
+    --watermelon: #FF5E54;
+    --watermelon-deep: #d63729;
+    --espresso: #3D2B23;
+    --cloud-dancer: #F0EEE9;
+
+    /* DARK — very dark, subtle mocha hint (mostly black) */
+    --d-bg: #0A0807;            /* near-black z mocha undertone bardzo subtelny */
+    --d-surface: #13100D;       /* lift surface (cards) — minimal mocha */
+    --d-surface-2: #1A1410;     /* hover surface */
+    --d-border: rgba(248,243,236,0.05);
+    --d-border-strong: rgba(248,243,236,0.10);
+    --d-text: #F8F3EC;
+    --d-text-muted: rgba(248,243,236,0.62);
+    --d-text-dim: rgba(248,243,236,0.38);
+    --d-now-line: #FF5E54;
+
+    /* LIGHT — łagodny mocha undertone (warm cream, między white a beige) */
+    --l-bg: #EAE0CD;            /* warm cream z subtle mocha — czytelnie ciepły, nie brązowy */
+    --l-surface: #F2EADC;       /* lift surface (cards) — jaśniejszy cream */
+    --l-surface-2: #DCD0BB;     /* hover surface — ciemniejszy mocha */
+    --l-border: rgba(61,43,35,0.14);
+    --l-border-strong: rgba(61,43,35,0.26);
+    --l-text: #261810;
+    --l-text-muted: rgba(38,24,16,0.62);
+    --l-text-dim: rgba(38,24,16,0.40);
+    --l-now-line: #d63729;
+
+    /* Spaces */
+    --sp-health: #4ade80;
+    --sp-sport: #f97316;
+    --sp-work: #3b82f6;
+    --sp-social: #a78bfa;
+    --sp-play: #facc15;
+    --sp-growth: #ec4899;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: "Jost", -apple-system, "Inter", system-ui, sans-serif; letter-spacing: 0.04px; }
+  body { background: #d6d3cc; padding: 32px; }
+  .page-h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .lede { color: #6b6b6b; font-size: 13px; max-width: 70ch; margin-bottom: 28px; line-height: 1.5; }
+  h2.section-h {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b6b6b;
+    font-weight: 600;
+    margin: 32px 0 12px;
+  }
+
+  /* Window frame */
+  .frame {
+    background: #b3afa6;
+    padding: 14px;
+    border-radius: 14px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+  }
+  .frame-bar { display: flex; align-items: center; gap: 8px; padding: 0 4px 12px; font-family: ui-monospace, monospace; font-size: 11px; color: #4f4c46; }
+  .frame-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .frame-bar .dot.r { background: #ff5f57; }
+  .frame-bar .dot.y { background: #ffbd2e; }
+  .frame-bar .dot.g { background: #28c940; }
+  .frame-bar .url { margin-left: 12px; opacity: 0.85; }
+
+  /* App shell */
+  .app {
+    width: 100%;
+    height: 760px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .app-dark { background: var(--d-bg); color: var(--d-text); }
+  .app-light { background: var(--l-bg); color: var(--l-text); }
+
+  /* === TOPBAR === */
+  .topbar {
+    height: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 0.33px solid;
+  }
+  .app-dark .topbar { border-color: var(--d-border); }
+  .app-light .topbar { border-color: var(--l-border); }
+
+  .brand-mark { display: flex; align-items: center; gap: 10px; width: 200px; flex-shrink: 0; }
+  .brand-mark svg { width: 26px; height: 26px; }
+  .brand-mark .wm { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; }
+
+  .tab-row { display: flex; gap: 2px; align-items: center; padding: 0 16px; }
+  .tab {
+    padding: 6px 14px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 120ms ease;
+  }
+  .tab.active { font-weight: 600; }
+  .app-dark .tab { color: var(--d-text-muted); }
+  .app-dark .tab:hover { background: var(--d-surface); color: var(--d-text); }
+  .app-dark .tab.active { background: var(--d-surface-2); color: var(--d-text); }
+  .app-light .tab { color: var(--l-text-muted); }
+  .app-light .tab:hover { background: var(--l-surface); color: var(--l-text); }
+  .app-light .tab.active { background: var(--l-surface-2); color: var(--l-text); }
+
+  .week-nav { display: flex; align-items: center; gap: 8px; margin-left: 16px; }
+  .icon-btn {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    border: 0.33px solid transparent;
+  }
+  .app-dark .icon-btn:hover { background: var(--d-surface); }
+  .app-light .icon-btn:hover { background: var(--l-surface); }
+  .week-label { font-size: 13px; font-weight: 600; padding: 0 4px; }
+  .today-pill {
+    height: 28px; padding: 0 12px;
+    font-size: 12px; font-weight: 500;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex; align-items: center;
+    border: 0.33px solid;
+  }
+  .app-dark .today-pill { color: var(--d-text-muted); border-color: var(--d-border-strong); }
+  .app-dark .today-pill:hover { background: var(--d-surface); color: var(--d-text); }
+  .app-light .today-pill { color: var(--l-text-muted); border-color: var(--l-border-strong); }
+  .app-light .today-pill:hover { background: var(--l-surface); color: var(--l-text); }
+
+  .topbar-spacer { flex: 1; }
+  .topbar-actions { display: flex; gap: 8px; align-items: center; }
+
+  .pill {
+    height: 28px;
+    padding: 0 12px;
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 0.33px solid;
+  }
+  .app-dark .pill { color: var(--d-text-muted); border-color: var(--d-border-strong); background: var(--d-surface); }
+  .app-light .pill { color: var(--l-text-muted); border-color: var(--l-border-strong); background: var(--l-surface); }
+  .balance-dots { display: inline-flex; gap: 2px; }
+  .balance-dots span { width: 5px; height: 5px; border-radius: 50%; }
+
+  .btn-primary {
+    height: 30px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .app-dark .btn-primary { background: var(--d-text); color: var(--d-bg); }
+  .app-light .btn-primary { background: var(--watermelon-deep); color: #FBF7EF; }
+
+  /* === BODY === */
+  .body { display: flex; flex: 1; overflow: hidden; }
+
+  /* === SIDEBAR === */
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    padding: 14px 10px;
+    border-right: 0.33px solid;
+    display: flex; flex-direction: column;
+  }
+  .app-dark .sidebar { border-color: var(--d-border); }
+  .app-light .sidebar { border-color: var(--l-border); }
+
+  .sb-section { display: flex; flex-direction: column; gap: 2px; margin-bottom: 16px; }
+  .sb-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 8px 12px 4px; font-weight: 600;
+  }
+  .app-dark .sb-label { color: var(--d-text-dim); }
+  .app-light .sb-label { color: var(--l-text-dim); }
+
+  .nav-item {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: 13px; font-weight: 500;
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer;
+    transition: background 120ms ease;
+  }
+  .app-dark .nav-item { color: var(--d-text-muted); }
+  .app-dark .nav-item:hover { background: var(--d-surface); color: var(--d-text); }
+  .app-dark .nav-item.active { background: var(--d-surface-2); color: var(--d-text); font-weight: 600; }
+  .app-light .nav-item { color: var(--l-text-muted); }
+  .app-light .nav-item:hover { background: var(--l-surface); color: var(--l-text); }
+  .app-light .nav-item.active { background: var(--l-surface-2); color: var(--l-text); font-weight: 600; }
+
+  .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .nav-count { margin-left: auto; font-size: 10px; opacity: 0.6; }
+
+  /* Spaces in sidebar */
+  .space-row {
+    height: 28px; padding: 0 12px; border-radius: 8px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12px; cursor: pointer;
+  }
+  .app-dark .space-row { color: var(--d-text-muted); }
+  .app-dark .space-row:hover { background: var(--d-surface); color: var(--d-text); }
+  .app-light .space-row { color: var(--l-text-muted); }
+  .app-light .space-row:hover { background: var(--l-surface); color: var(--l-text); }
+  .space-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .space-pct { margin-left: auto; font-size: 10px; opacity: 0.6; font-variant-numeric: tabular-nums; }
+
+  /* === MAIN — Calendar Week View === */
+  .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* Day labels row */
+  .day-labels {
+    height: 56px;
+    display: grid;
+    grid-template-columns: 56px repeat(7, 1fr);
+    border-bottom: 0.33px solid;
+    flex-shrink: 0;
+  }
+  .app-dark .day-labels { border-color: var(--d-border); }
+  .app-light .day-labels { border-color: var(--l-border); }
+  .gutter { /* hour gutter spacer */ }
+  .day-h {
+    border-right: 0.33px solid;
+    padding: 8px 12px;
+    display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  }
+  .day-h:last-child { border-right: none; }
+  .app-dark .day-h { border-color: var(--d-border); }
+  .app-light .day-h { border-color: var(--l-border); }
+  .day-h .name { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .day-h .num { font-size: 18px; font-weight: 600; }
+  .app-dark .day-h .name { color: var(--d-text-dim); }
+  .app-light .day-h .name { color: var(--l-text-dim); }
+  .day-h.today .name { color: var(--watermelon); }
+  .day-h.today .num { color: var(--watermelon); }
+  .app-light .day-h.today .name { color: var(--watermelon-deep); }
+  .app-light .day-h.today .num { color: var(--watermelon-deep); }
+
+  /* All-day row */
+  .allday-row {
+    min-height: 30px;
+    display: grid;
+    grid-template-columns: 56px repeat(7, 1fr);
+    border-bottom: 0.33px solid;
+    flex-shrink: 0;
+  }
+  .app-dark .allday-row { border-color: var(--d-border); }
+  .app-light .allday-row { border-color: var(--l-border); }
+  .allday-row .gutter {
+    font-size: 9px; padding: 8px 8px 0; text-align: right;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .app-dark .allday-row .gutter { color: var(--d-text-dim); }
+  .app-light .allday-row .gutter { color: var(--l-text-dim); }
+  .allday-cell { padding: 4px 4px; border-right: 0.33px solid; min-height: 30px; display: flex; flex-direction: column; gap: 2px; }
+  .allday-cell:last-child { border-right: none; }
+  .app-dark .allday-cell { border-color: var(--d-border); }
+  .app-light .allday-cell { border-color: var(--l-border); }
+  .allday-bar {
+    height: 18px; border-radius: 4px; padding: 0 6px;
+    font-size: 10px; line-height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    border: 0.33px solid;
+  }
+
+  /* Hours grid */
+  .hours-grid {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px repeat(7, 1fr);
+  }
+  .hour-label {
+    font-size: 10px;
+    padding: 4px 8px 0;
+    text-align: right;
+    height: 48px;
+    border-bottom: 0.33px solid;
+    border-right: 0.33px solid;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+  }
+  .app-dark .hour-label { color: var(--d-text-dim); border-color: var(--d-border); }
+  .app-light .hour-label { color: var(--l-text-dim); border-color: var(--l-border); }
+
+  .day-col {
+    position: relative;
+    border-right: 0.33px solid;
+  }
+  .day-col:last-child { border-right: none; }
+  .app-dark .day-col { border-color: var(--d-border); }
+  .app-light .day-col { border-color: var(--l-border); }
+
+  .day-col .hour-cell {
+    height: 48px;
+    border-bottom: 0.33px solid;
+  }
+  .app-dark .day-col .hour-cell { border-color: var(--d-border); }
+  .app-light .day-col .hour-cell { border-color: var(--l-border); }
+  .day-col .hour-cell.half { border-bottom-style: dashed; opacity: 0.5; }
+
+  /* Today column subtle highlight */
+  .day-col.today { background: rgba(255,94,84,0.025); }
+  .app-light .day-col.today { background: rgba(214,55,41,0.03); }
+
+  /* Now line */
+  .now-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1.5px;
+    background: var(--d-now-line);
+    z-index: 4;
+    pointer-events: none;
+  }
+  .app-light .now-line { background: var(--l-now-line); }
+  .now-line::before {
+    content: ''; position: absolute; left: -3px; top: -3px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: inherit;
+  }
+
+  /* Task block (positioned absolute in day-col) */
+  .task {
+    position: absolute;
+    left: 4px; right: 4px;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 11px;
+    border: 0.33px solid;
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+  }
+  .task .t-title { font-weight: 500; line-height: 1.25; margin-bottom: 2px; }
+  .task .t-meta { font-size: 9px; opacity: 0.85; display: flex; align-items: center; gap: 4px; font-variant-numeric: tabular-nums; }
+  .task .t-progress { height: 2px; margin-top: 4px; border-radius: 1px; overflow: hidden; }
+  .task .t-progress-fill { height: 100%; background: currentColor; opacity: 0.55; }
+
+  /* Space-tinted task colors — DARK */
+  .app-dark .task.health  { background: rgba(74,222,128,0.13); border-color: rgba(74,222,128,0.35); color: #86efac; }
+  .app-dark .task.sport   { background: rgba(249,115,22,0.13); border-color: rgba(249,115,22,0.40); color: #fdba74; }
+  .app-dark .task.work    { background: rgba(59,130,246,0.13); border-color: rgba(59,130,246,0.38); color: #93c5fd; }
+  .app-dark .task.social  { background: rgba(167,139,250,0.13); border-color: rgba(167,139,250,0.38); color: #c4b5fd; }
+  .app-dark .task.play    { background: rgba(250,204,21,0.13); border-color: rgba(250,204,21,0.38); color: #fde047; }
+  .app-dark .task.growth  { background: rgba(236,72,153,0.13); border-color: rgba(236,72,153,0.38); color: #f9a8d4; }
+  .app-dark .task.overdue { background: rgba(255,94,84,0.13); border-color: rgba(255,94,84,0.45); color: var(--watermelon); }
+  .app-dark .task.finished { opacity: 0.45; }
+
+  /* Space-tinted — LIGHT (warm sat) */
+  .app-light .task.health  { background: rgba(74,222,128,0.18); border-color: rgba(34,143,71,0.5); color: #166534; }
+  .app-light .task.sport   { background: rgba(249,115,22,0.18); border-color: rgba(194,65,12,0.5); color: #9a3412; }
+  .app-light .task.work    { background: rgba(59,130,246,0.13); border-color: rgba(29,78,216,0.5); color: #1e40af; }
+  .app-light .task.social  { background: rgba(167,139,250,0.20); border-color: rgba(109,40,217,0.5); color: #5b21b6; }
+  .app-light .task.play    { background: rgba(250,204,21,0.30); border-color: rgba(161,98,7,0.55); color: #854d0e; }
+  .app-light .task.growth  { background: rgba(236,72,153,0.16); border-color: rgba(190,24,93,0.5); color: #9d174d; }
+  .app-light .task.overdue { background: rgba(214,55,41,0.12); border-color: rgba(214,55,41,0.55); color: #b91c1c; }
+  .app-light .task.finished { opacity: 0.5; }
+
+  /* Status indicators */
+  .task .t-status {
+    display: inline-flex; align-items: center; gap: 3px;
+    padding: 0 4px; height: 13px; border-radius: 3px;
+    font-size: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+    background: rgba(255,255,255,0.06);
+  }
+  .app-light .task .t-status { background: rgba(0,0,0,0.06); }
+  .task.in-progress::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: currentColor;
+  }
+  .task.finished .t-title::before {
+    content: '✓ '; opacity: 0.7;
+  }
+
+  /* Custom scroll */
+  .hours-grid::-webkit-scrollbar { width: 6px; }
+  .hours-grid::-webkit-scrollbar-thumb { background: rgba(128,128,128,0.25); border-radius: 3px; }
+
+  /* Allday bars dark */
+  .app-dark .allday-bar.work    { background: rgba(59,130,246,0.18); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
+  .app-dark .allday-bar.health  { background: rgba(74,222,128,0.18); border-color: rgba(74,222,128,0.4); color: #86efac; }
+  .app-light .allday-bar.work   { background: rgba(59,130,246,0.18); border-color: rgba(29,78,216,0.5); color: #1e40af; }
+  .app-light .allday-bar.health { background: rgba(74,222,128,0.22); border-color: rgba(22,101,52,0.5); color: #166534; }
+
+  /* Legend */
+  .legend { display: flex; gap: 14px; margin-top: 10px; padding: 0 4px; font-size: 11px; color: #595550; flex-wrap: wrap; }
+  .legend-chip { display: inline-flex; align-items: center; gap: 6px; }
+  .legend-chip .swatch { width: 12px; height: 12px; border-radius: 3px; border: 0.33px solid rgba(0,0,0,0.1); }
+  .legend-chip code { font-family: ui-monospace, monospace; font-size: 10px; }
+
+  /* Inline svg icons */
+  .ico { width: 16px; height: 16px; stroke-width: 2; }
+</style>
+</head>
+<body>
+
+<h1 class="page-h1">Polarete — Realistic App Mockup</h1>
+<p class="lede">Calendar Week View. Dark <code>#0A0807</code> — prawie czerń z subtelnym mocha hint. Light <code>#EAE0CD</code> — warm cream z łagodnym mocha undertone (nie biały, nie brązowy — pomiędzy). Brak podziału sidebar/main. Realistic tasks z 6 spaces, statusy In Progress / Overdue / Finished, hours grid z now-line.</p>
+
+<!-- ============== DARK ============== -->
+<h2 class="section-h">Dark — near-black + mocha undertone (#0A0807)</h2>
+<div class="frame">
+  <div class="frame-bar">
+    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <span class="url">polarete · planner · week 19</span>
+  </div>
+  <div class="app app-dark">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="brand-mark">
+        <svg viewBox="0 0 1024 1024">
+          <path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#F8F3EC"/>
+          <path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#FF5E54"/>
+        </svg>
+        <span class="wm">polarete</span>
+      </div>
+      <div class="tab-row">
+        <span class="tab">Day</span>
+        <span class="tab active">Week</span>
+        <span class="tab">Month</span>
+      </div>
+      <div class="week-nav">
+        <span class="icon-btn">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
+        </span>
+        <span class="week-label">Tydzień 19 · 4–10 maj 2026</span>
+        <span class="icon-btn">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+        <span class="today-pill">Dziś</span>
+      </div>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-actions">
+        <span class="pill">
+          <span class="balance-dots">
+            <span style="background:var(--sp-health)"></span><span style="background:var(--sp-sport)"></span><span style="background:var(--sp-work)"></span><span style="background:var(--sp-social)"></span><span style="background:var(--sp-play)"></span><span style="background:var(--sp-growth)"></span>
+          </span>
+          Balance 78%
+        </span>
+        <span class="pill">
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" style="width:11px;height:11px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          142
+        </span>
+        <button class="btn-primary">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:13px;height:13px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nowe zadanie
+        </button>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sb-section">
+          <div class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Planner
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Goals
+            <span class="nav-count">7</span>
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Habits
+            <span class="nav-count">12</span>
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 0 20M2 12h20"/></svg>
+            Balance
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+            Inbox
+            <span class="nav-count">3</span>
+          </div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-label">Spaces</div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-health)"></span>Health<span class="space-pct">14%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-sport)"></span>Sport<span class="space-pct">22%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-work)"></span>Work<span class="space-pct">38%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-social)"></span>Social<span class="space-pct">9%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-play)"></span>Play<span class="space-pct">6%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-growth)"></span>Growth<span class="space-pct">11%</span></div>
+        </div>
+
+        <div class="sb-section" style="margin-top:auto">
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN: Calendar Week View -->
+      <main class="main">
+        <!-- Day labels -->
+        <div class="day-labels">
+          <div class="gutter"></div>
+          <div class="day-h"><span class="name">Pon</span><span class="num">04</span></div>
+          <div class="day-h"><span class="name">Wt</span><span class="num">05</span></div>
+          <div class="day-h today"><span class="name">Śr · dziś</span><span class="num">06</span></div>
+          <div class="day-h"><span class="name">Czw</span><span class="num">07</span></div>
+          <div class="day-h"><span class="name">Pt</span><span class="num">08</span></div>
+          <div class="day-h"><span class="name">Sob</span><span class="num">09</span></div>
+          <div class="day-h"><span class="name">Nd</span><span class="num">10</span></div>
+        </div>
+
+        <!-- All-day -->
+        <div class="allday-row">
+          <div class="gutter">All-day</div>
+          <div class="allday-cell"></div>
+          <div class="allday-cell"><div class="allday-bar work">Sprint #281 · review</div></div>
+          <div class="allday-cell"><div class="allday-bar work">Sprint #281 · review</div></div>
+          <div class="allday-cell"><div class="allday-bar health">Detox dzień 3/7</div></div>
+          <div class="allday-cell"><div class="allday-bar health">Detox dzień 4/7</div></div>
+          <div class="allday-cell"></div>
+          <div class="allday-cell"></div>
+        </div>
+
+        <!-- Hours grid -->
+        <div class="hours-grid">
+          <!-- Hours column -->
+          <div>
+            <div class="hour-label">07:00</div>
+            <div class="hour-label">08:00</div>
+            <div class="hour-label">09:00</div>
+            <div class="hour-label">10:00</div>
+            <div class="hour-label">11:00</div>
+            <div class="hour-label">12:00</div>
+            <div class="hour-label">13:00</div>
+            <div class="hour-label">14:00</div>
+            <div class="hour-label">15:00</div>
+            <div class="hour-label">16:00</div>
+            <div class="hour-label">17:00</div>
+            <div class="hour-label">18:00</div>
+            <div class="hour-label">19:00</div>
+            <div class="hour-label">20:00</div>
+            <div class="hour-label">21:00</div>
+            <div class="hour-label">22:00</div>
+          </div>
+          <!-- Pon -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <!-- task: Morning run 7:00-7:30 -->
+            <div class="task sport" style="top:0px; height:24px">
+              <div class="t-title">Morning run 5km</div>
+            </div>
+            <!-- Coffee + journaling 8:00-8:15 -->
+            <div class="task growth" style="top:48px; height:14px">
+              <div class="t-title">Coffee + journaling</div>
+            </div>
+            <!-- Deep work 9:00-11:00 -->
+            <div class="task work in-progress" style="top:96px; height:96px">
+              <div class="t-title">Deep work — refactor planner</div>
+              <div class="t-meta">9:00 – 11:00 · <span class="t-status">In progress</span></div>
+              <div class="t-progress"><div class="t-progress-fill" style="width:65%"></div></div>
+            </div>
+            <!-- Reading 21:00-21:30 -->
+            <div class="task growth" style="top:672px; height:24px">
+              <div class="t-title">"Atomic Habits" — rozdz. 7</div>
+            </div>
+          </div>
+          <!-- Wt -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <!-- Stretching 7:30-7:50 -->
+            <div class="task health finished" style="top:24px; height:16px">
+              <div class="t-title">Stretching + meditation</div>
+            </div>
+            <!-- Send Q1 invoices Overdue -->
+            <div class="task overdue" style="top:120px; height:24px">
+              <div class="t-title">Send Q1 invoices</div>
+              <div class="t-meta"><span class="t-status">Overdue · 1×</span></div>
+            </div>
+            <!-- Lunch 13:00-14:00 -->
+            <div class="task social" style="top:288px; height:48px">
+              <div class="t-title">Lunch z Tomkiem</div>
+              <div class="t-meta">13:00 – 14:00</div>
+            </div>
+            <!-- Gym 18:00-19:00 -->
+            <div class="task sport" style="top:528px; height:48px">
+              <div class="t-title">Gym — push day</div>
+              <div class="t-meta">18:00 – 19:00</div>
+            </div>
+          </div>
+          <!-- Śr today -->
+          <div class="day-col today">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <!-- Yoga 7:00 -->
+            <div class="task health finished" style="top:0px; height:24px">
+              <div class="t-title">Yoga flow</div>
+            </div>
+            <!-- Standup 9:30 -->
+            <div class="task work finished" style="top:120px; height:14px">
+              <div class="t-title">Daily standup</div>
+            </div>
+            <!-- Code review 10:00-12:00 -->
+            <div class="task work in-progress" style="top:144px; height:96px">
+              <div class="t-title">Review PR #315 + #316</div>
+              <div class="t-meta">10:00 – 12:00 · <span class="t-status">In progress</span></div>
+              <div class="t-progress"><div class="t-progress-fill" style="width:30%"></div></div>
+            </div>
+            <!-- Now: 12:50 → top = (12-7)*48 + 50/60*48 = 280px -->
+            <div class="now-line" style="top:280px"></div>
+            <!-- Lunch + walk 13:00-14:00 -->
+            <div class="task play" style="top:288px; height:48px">
+              <div class="t-title">Spacer + lunch</div>
+              <div class="t-meta">13:00 – 14:00</div>
+            </div>
+            <!-- AI prompts session 15:00-16:30 -->
+            <div class="task growth" style="top:384px; height:72px">
+              <div class="t-title">Sesja AI prompts</div>
+              <div class="t-meta">15:00 – 16:30</div>
+            </div>
+            <!-- Run 18:30-19:00 -->
+            <div class="task sport" style="top:552px; height:24px">
+              <div class="t-title">Run 5km easy</div>
+            </div>
+            <!-- Dinner 20:00 -->
+            <div class="task social" style="top:624px; height:48px">
+              <div class="t-title">Kolacja z Marią</div>
+              <div class="t-meta">20:00 – 21:00</div>
+            </div>
+          </div>
+          <!-- Czw -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <!-- Run 7:00 -->
+            <div class="task sport" style="top:0px; height:24px">
+              <div class="t-title">Morning run 5km</div>
+            </div>
+            <!-- Coffee 8:00 -->
+            <div class="task growth" style="top:48px; height:14px">
+              <div class="t-title">Coffee + journaling</div>
+            </div>
+            <!-- Designer call 10:00-11:00 -->
+            <div class="task work" style="top:144px; height:48px">
+              <div class="t-title">Call z designerem</div>
+              <div class="t-meta">10:00 – 11:00</div>
+            </div>
+            <!-- Strategy session 14:00-15:30 -->
+            <div class="task work" style="top:336px; height:72px">
+              <div class="t-title">Q3 strategy session</div>
+              <div class="t-meta">14:00 – 15:30</div>
+            </div>
+            <!-- Movie 20:00-22:00 -->
+            <div class="task play" style="top:624px; height:96px">
+              <div class="t-title">Movie night</div>
+              <div class="t-meta">20:00 – 22:00 · Dune Pt II</div>
+            </div>
+          </div>
+          <!-- Pt -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <!-- Sprint review demo 11:00-12:00 -->
+            <div class="task work" style="top:192px; height:48px">
+              <div class="t-title">Sprint review demo</div>
+              <div class="t-meta">11:00 – 12:00</div>
+            </div>
+            <!-- Friends 18:00-20:00 -->
+            <div class="task social" style="top:528px; height:96px">
+              <div class="t-title">Drinks z ekipą</div>
+              <div class="t-meta">18:00 – 20:00</div>
+            </div>
+            <!-- Weekly review 22:00 -->
+            <div class="task growth" style="top:720px; height:24px">
+              <div class="t-title">Weekly review</div>
+            </div>
+          </div>
+          <!-- Sob -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <!-- Long run 9:00-10:30 -->
+            <div class="task sport" style="top:96px; height:72px">
+              <div class="t-title">Long run 12km</div>
+              <div class="t-meta">9:00 – 10:30</div>
+            </div>
+            <!-- Reading 16:00-17:00 -->
+            <div class="task growth" style="top:432px; height:48px">
+              <div class="t-title">Reading book club</div>
+              <div class="t-meta">16:00 – 17:00</div>
+            </div>
+          </div>
+          <!-- Nd -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <!-- Brunch 11:00-13:00 -->
+            <div class="task social" style="top:192px; height:96px">
+              <div class="t-title">Brunch z rodziną</div>
+              <div class="t-meta">11:00 – 13:00</div>
+            </div>
+            <!-- Plan tygodnia 19:00 -->
+            <div class="task growth in-progress" style="top:576px; height:48px">
+              <div class="t-title">Plan kolejnego tygodnia</div>
+              <div class="t-meta">19:00 – 20:00</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <div class="legend">
+    <span class="legend-chip"><span class="swatch" style="background:#0A0807"></span><code>#0A0807 bg</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#13100D"></span><code>#13100D surface</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#1A1410"></span><code>#1A1410 hover</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#FF5E54"></span><code>#FF5E54 spark</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#F8F3EC"></span><code>#F8F3EC text</code></span>
+  </div>
+</div>
+
+<!-- ============== LIGHT ============== -->
+<h2 class="section-h">Light — warm cream + subtle mocha (#EAE0CD)</h2>
+<div class="frame">
+  <div class="frame-bar">
+    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <span class="url">polarete · planner · week 19 · light</span>
+  </div>
+  <div class="app app-light">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="brand-mark">
+        <svg viewBox="0 0 1024 1024">
+          <path d="M704.673 169.151C781.253 162.893 874.659 184.97 904.962 260.04C1001.83 500.064 662.094 747.374 480.075 855.855V527.195C559.805 490.371 689.991 402.238 733.226 323.645C794.053 207.659 621.857 239.188 563.175 264.788C440.122 312.618 296.829 391.561 227.557 509.844C179.356 627.756 367.633 577.453 420.233 553.276C348.882 614.299 210.622 701.929 125.356 638.345C63.8729 592.485 138.681 492.778 179.049 448.339C306.654 307.892 513.201 184.795 704.673 169.151Z" fill="#261810"/>
+          <path d="M531.711 446.392C562.816 446.392 588.031 421.177 588.031 390.073C588.031 358.969 562.816 333.754 531.711 333.754C500.607 333.754 475.392 358.969 475.392 390.073C475.392 421.177 500.607 446.392 531.711 446.392Z" fill="#d63729"/>
+        </svg>
+        <span class="wm">polarete</span>
+      </div>
+      <div class="tab-row">
+        <span class="tab">Day</span>
+        <span class="tab active">Week</span>
+        <span class="tab">Month</span>
+      </div>
+      <div class="week-nav">
+        <span class="icon-btn">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
+        </span>
+        <span class="week-label">Tydzień 19 · 4–10 maj 2026</span>
+        <span class="icon-btn">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+        <span class="today-pill">Dziś</span>
+      </div>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-actions">
+        <span class="pill">
+          <span class="balance-dots">
+            <span style="background:var(--sp-health)"></span><span style="background:var(--sp-sport)"></span><span style="background:var(--sp-work)"></span><span style="background:var(--sp-social)"></span><span style="background:var(--sp-play)"></span><span style="background:var(--sp-growth)"></span>
+          </span>
+          Balance 78%
+        </span>
+        <span class="pill">
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" style="width:11px;height:11px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          142
+        </span>
+        <button class="btn-primary">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:13px;height:13px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nowe zadanie
+        </button>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sb-section">
+          <div class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Planner
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Goals
+            <span class="nav-count">7</span>
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Habits
+            <span class="nav-count">12</span>
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 0 20M2 12h20"/></svg>
+            Balance
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+            Inbox
+            <span class="nav-count">3</span>
+          </div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-label">Spaces</div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-health)"></span>Health<span class="space-pct">14%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-sport)"></span>Sport<span class="space-pct">22%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-work)"></span>Work<span class="space-pct">38%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-social)"></span>Social<span class="space-pct">9%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-play)"></span>Play<span class="space-pct">6%</span></div>
+          <div class="space-row"><span class="space-dot" style="background:var(--sp-growth)"></span>Growth<span class="space-pct">11%</span></div>
+        </div>
+
+        <div class="sb-section" style="margin-top:auto">
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN: Calendar Week View -->
+      <main class="main">
+        <div class="day-labels">
+          <div class="gutter"></div>
+          <div class="day-h"><span class="name">Pon</span><span class="num">04</span></div>
+          <div class="day-h"><span class="name">Wt</span><span class="num">05</span></div>
+          <div class="day-h today"><span class="name">Śr · dziś</span><span class="num">06</span></div>
+          <div class="day-h"><span class="name">Czw</span><span class="num">07</span></div>
+          <div class="day-h"><span class="name">Pt</span><span class="num">08</span></div>
+          <div class="day-h"><span class="name">Sob</span><span class="num">09</span></div>
+          <div class="day-h"><span class="name">Nd</span><span class="num">10</span></div>
+        </div>
+
+        <div class="allday-row">
+          <div class="gutter">All-day</div>
+          <div class="allday-cell"></div>
+          <div class="allday-cell"><div class="allday-bar work">Sprint #281 · review</div></div>
+          <div class="allday-cell"><div class="allday-bar work">Sprint #281 · review</div></div>
+          <div class="allday-cell"><div class="allday-bar health">Detox dzień 3/7</div></div>
+          <div class="allday-cell"><div class="allday-bar health">Detox dzień 4/7</div></div>
+          <div class="allday-cell"></div>
+          <div class="allday-cell"></div>
+        </div>
+
+        <div class="hours-grid">
+          <div>
+            <div class="hour-label">07:00</div><div class="hour-label">08:00</div><div class="hour-label">09:00</div><div class="hour-label">10:00</div><div class="hour-label">11:00</div><div class="hour-label">12:00</div><div class="hour-label">13:00</div><div class="hour-label">14:00</div><div class="hour-label">15:00</div><div class="hour-label">16:00</div><div class="hour-label">17:00</div><div class="hour-label">18:00</div><div class="hour-label">19:00</div><div class="hour-label">20:00</div><div class="hour-label">21:00</div><div class="hour-label">22:00</div>
+          </div>
+          <!-- Pon -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <div class="task sport" style="top:0px; height:24px"><div class="t-title">Morning run 5km</div></div>
+            <div class="task growth" style="top:48px; height:14px"><div class="t-title">Coffee + journaling</div></div>
+            <div class="task work in-progress" style="top:96px; height:96px"><div class="t-title">Deep work — refactor planner</div><div class="t-meta">9:00 – 11:00 · <span class="t-status">In progress</span></div><div class="t-progress"><div class="t-progress-fill" style="width:65%"></div></div></div>
+            <div class="task growth" style="top:672px; height:24px"><div class="t-title">"Atomic Habits" — rozdz. 7</div></div>
+          </div>
+          <!-- Wt -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <div class="task health finished" style="top:24px; height:16px"><div class="t-title">Stretching + meditation</div></div>
+            <div class="task overdue" style="top:120px; height:24px"><div class="t-title">Send Q1 invoices</div><div class="t-meta"><span class="t-status">Overdue · 1×</span></div></div>
+            <div class="task social" style="top:288px; height:48px"><div class="t-title">Lunch z Tomkiem</div><div class="t-meta">13:00 – 14:00</div></div>
+            <div class="task sport" style="top:528px; height:48px"><div class="t-title">Gym — push day</div><div class="t-meta">18:00 – 19:00</div></div>
+          </div>
+          <!-- Śr today -->
+          <div class="day-col today">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <div class="task health finished" style="top:0px; height:24px"><div class="t-title">Yoga flow</div></div>
+            <div class="task work finished" style="top:120px; height:14px"><div class="t-title">Daily standup</div></div>
+            <div class="task work in-progress" style="top:144px; height:96px"><div class="t-title">Review PR #315 + #316</div><div class="t-meta">10:00 – 12:00 · <span class="t-status">In progress</span></div><div class="t-progress"><div class="t-progress-fill" style="width:30%"></div></div></div>
+            <div class="now-line" style="top:280px"></div>
+            <div class="task play" style="top:288px; height:48px"><div class="t-title">Spacer + lunch</div><div class="t-meta">13:00 – 14:00</div></div>
+            <div class="task growth" style="top:384px; height:72px"><div class="t-title">Sesja AI prompts</div><div class="t-meta">15:00 – 16:30</div></div>
+            <div class="task sport" style="top:552px; height:24px"><div class="t-title">Run 5km easy</div></div>
+            <div class="task social" style="top:624px; height:48px"><div class="t-title">Kolacja z Marią</div><div class="t-meta">20:00 – 21:00</div></div>
+          </div>
+          <!-- Czw -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <div class="task sport" style="top:0px; height:24px"><div class="t-title">Morning run 5km</div></div>
+            <div class="task growth" style="top:48px; height:14px"><div class="t-title">Coffee + journaling</div></div>
+            <div class="task work" style="top:144px; height:48px"><div class="t-title">Call z designerem</div><div class="t-meta">10:00 – 11:00</div></div>
+            <div class="task work" style="top:336px; height:72px"><div class="t-title">Q3 strategy session</div><div class="t-meta">14:00 – 15:30</div></div>
+            <div class="task play" style="top:624px; height:96px"><div class="t-title">Movie night</div><div class="t-meta">20:00 – 22:00 · Dune Pt II</div></div>
+          </div>
+          <!-- Pt -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <div class="task work" style="top:192px; height:48px"><div class="t-title">Sprint review demo</div><div class="t-meta">11:00 – 12:00</div></div>
+            <div class="task social" style="top:528px; height:96px"><div class="t-title">Drinks z ekipą</div><div class="t-meta">18:00 – 20:00</div></div>
+            <div class="task growth" style="top:720px; height:24px"><div class="t-title">Weekly review</div></div>
+          </div>
+          <!-- Sob -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <div class="task sport" style="top:96px; height:72px"><div class="t-title">Long run 12km</div><div class="t-meta">9:00 – 10:30</div></div>
+            <div class="task growth" style="top:432px; height:48px"><div class="t-title">Reading book club</div><div class="t-meta">16:00 – 17:00</div></div>
+          </div>
+          <!-- Nd -->
+          <div class="day-col">
+            <div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div><div class="hour-cell"></div>
+            <div class="task social" style="top:192px; height:96px"><div class="t-title">Brunch z rodziną</div><div class="t-meta">11:00 – 13:00</div></div>
+            <div class="task growth in-progress" style="top:576px; height:48px"><div class="t-title">Plan kolejnego tygodnia</div><div class="t-meta">19:00 – 20:00</div></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <div class="legend">
+    <span class="legend-chip"><span class="swatch" style="background:#EAE0CD"></span><code>#EAE0CD bg</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#F2EADC"></span><code>#F2EADC surface</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#DCD0BB"></span><code>#DCD0BB hover</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#d63729"></span><code>#d63729 spark</code></span>
+    <span class="legend-chip"><span class="swatch" style="background:#261810"></span><code>#261810 text</code></span>
+  </div>
+</div>
+
+</body>
+</html>
