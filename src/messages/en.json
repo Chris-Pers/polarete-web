@@ -8,7 +8,17 @@
     "howItWorks": "How it works",
     "pricing": "Pricing",
     "faq": "FAQ",
+    "blog": "Blog",
     "joinWaitlist": "Join waitlist"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Philosophy of balance, behind the scenes of building Polarete and why a task manager isn't enough.",
+    "backToBlog": "Back to blog",
+    "readMore": "Read more",
+    "empty": "No posts yet. Something will show up here soon.",
+    "publishedOn": "Published",
+    "by": "by"
   },
   "hero": {
     "tagline": "Life in balance",

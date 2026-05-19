@@ -8,7 +8,17 @@
     "howItWorks": "Jak to działa",
     "pricing": "Cennik",
     "faq": "FAQ",
+    "blog": "Blog",
     "joinWaitlist": "Dołącz do waitlisty"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Filozofia równowagi, kulisy budowy Polarete i dlaczego task manager to za mało.",
+    "backToBlog": "Wróć do bloga",
+    "readMore": "Czytaj dalej",
+    "empty": "Brak postów. Wkrótce coś tu się pojawi.",
+    "publishedOn": "Opublikowano",
+    "by": "przez"
   },
   "hero": {
     "tagline": "Życie w równowadze",
