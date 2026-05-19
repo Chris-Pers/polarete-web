@@ -24,6 +24,7 @@ export function Navbar() {
           <li><a href="#how" className="hover:text-[var(--color-ink)] transition-colors">{t('howItWorks')}</a></li>
           <li><a href="#pricing" className="hover:text-[var(--color-ink)] transition-colors">{t('pricing')}</a></li>
           <li><a href="#faq" className="hover:text-[var(--color-ink)] transition-colors">{t('faq')}</a></li>
+          <li><Link href="/blog" className="hover:text-[var(--color-ink)] transition-colors">{t('blog')}</Link></li>
         </ul>
 
         <a
